@@ -22,7 +22,7 @@ public class App {
     public static void main(String[] args) throws FileNotFoundException {
 
         //人机交互
-        System.out.println("请输入存放订单html页面绝对路径，然后回车");
+        System.out.println("请输入存放订单html页面或文件夹绝对路径，然后回车");
         Scanner s = new Scanner(System.in);
         File htmlDir = new File(s.nextLine());
         String reportFile;
