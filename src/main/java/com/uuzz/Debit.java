@@ -90,7 +90,7 @@ public class Debit {
             String momey = foncol.childNode(2).outerHtml();
             debit.setMoney(momey);
             //发票收件人邮件地址
-            debit.setEmail(html.getName().replace("html", ""));
+            debit.setEmail(html.getName().replace(".html", ""));
             return debit;
         } catch (Exception e) {
             throw new RuntimeException(e);
