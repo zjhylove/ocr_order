@@ -19,6 +19,8 @@ import java.util.Scanner;
  */
 public class App {
 
+    public static final String EXECEL_NAME = "发票汇总.xls";
+
     public static void main(String[] args) throws FileNotFoundException {
 
         //人机交互
@@ -26,14 +28,17 @@ public class App {
         Scanner s = new Scanner(System.in);
         File htmlDir = new File(s.nextLine());
         String reportFile;
-        String excelName = "发票汇总.xls";
         List<File> htmlS = new ArrayList();
         if (htmlDir.isDirectory()) {
+            reportFile = htmlDir.getAbsolutePath() + File.separator + EXECEL_NAME;
+            File excel = new File(reportFile);
+            if (excel.exists()) {
+                excel.delete();
+            }
             htmlS = Arrays.asList(htmlDir.listFiles());
-            reportFile = htmlDir.getAbsolutePath() + File.separator + excelName;
         } else {
             htmlS.add(htmlDir);
-            reportFile = htmlDir.getParentFile().getAbsolutePath() + File.separator + excelName;
+            reportFile = htmlDir.getParentFile().getAbsolutePath() + File.separator + EXECEL_NAME;
         }
         //解析页面识别发票信息
         List<Debit> debits = loadFromHtml(htmlS);
